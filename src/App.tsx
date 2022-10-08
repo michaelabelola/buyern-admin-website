@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Navigate, Route, Routes, useParams} from 'react-router-dom';
 import './App.css';
+import SideNavigationView from "./components/SideNavigationView/SideNavigationView.lazy";
+import MainHeader from "./components/MainHeader/MainHeader.lazy";
+import InventoriesPage from "./pages/InventoriesPage/InventoriesPage.lazy";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App page">
+            <Routes>
+                <Route path={"/:entityUid"}>
+
+                    <Route path={"/:entityUid"} element={
+                        <div>
+                            <MainHeader/>
+                            <InventoriesPage/>
+                            <SideNavigationView/>
+                        </div>
+                    }/>
+
+                </Route>
+
+                <Route path={"/login"} element={
+                    <div>
+                    </div>
+                }/>
+            </Routes>
+
+        </div>
+    );
 }
 
 export default App;

@@ -1,0 +1,17 @@
+.MainHeader {
+
+}
+
+.MainHeader > .container-fluid {
+    /*display: none !important;*/
+    margin-left: 15rem;
+}
+
+.theme-dark .avatar {
+    --tblr-avatar-bg: #202020;
+}
+
+.theme-dark .UserMenuDropDownMenu {
+    background-color: #313131 !important;
+    color: inherit;
+}
