@@ -1,2 +1,7 @@
 .SideNavigationView {
 }
+
+.theme-dark .custom-dropdown-menu{
+    background-color: transparent !important;
+    color: inherit;
+}

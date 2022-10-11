@@ -4,14 +4,10 @@ import logo from '../../logo.svg';
 import {
     IconAdjustmentsAlt,
     IconBell,
-    IconMoneybag,
     IconMoon,
-    IconPhoneCall,
-    IconPigMoney,
     IconSearch,
     IconStar,
-    IconSun,
-    IconUser, IconX
+    IconSun
 } from "@tabler/icons";
 
 interface MainHeaderProps {
@@ -195,7 +191,8 @@ const HeaderSearch: FC<MainHeaderProps> = () => {
 
                         <input type="text" className="form-control border-0" placeholder="Search…"
                                aria-label="Search Everywhere or search Inventories"/>
-                        <span className="input-icon-addon border-0 justify-content-center align-items-center cursor-pointer">
+                        <span
+                            className="input-icon-addon border-0 justify-content-center align-items-center cursor-pointer">
                                      <IconAdjustmentsAlt strokeLinecap={"round"} strokeLinejoin={"round"}
                                                          strokeWidth={2} className={"cursor-pointer"}
                                                          stroke={"currentColor"}/>
