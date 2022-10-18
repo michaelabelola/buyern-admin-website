@@ -4,4 +4,19 @@
 .theme-dark .custom-dropdown-menu{
     background-color: transparent !important;
     color: inherit;
+    background: 0 0;
+    position: static;
+    box-shadow: none;
+    border: none;
+}
+.theme-dark .dropdown-menu-column > *{
+    text-decoration: none;
+    background-color: transparent !important;
+}
+
+.theme-dark .dropdown-menu-column > *:hover{
+    background-color: #151515 !important;
+}
+.theme-dark .dropdown-menu-column > *.active{
+    background-color: #151515 !important;
 }

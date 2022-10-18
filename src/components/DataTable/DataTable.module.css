@@ -1,0 +1,20 @@
+.DataTable {
+}
+
+.row {
+
+}
+
+.row.checked {
+    background: #282828;;
+}
+
+.row.active {
+    background: #282828;;
+}
+/*.row:hover {*/
+/*    background: var(--tblr-card-bg);*/
+/*}*/
+.row:hover {
+    background: #282828;
+}

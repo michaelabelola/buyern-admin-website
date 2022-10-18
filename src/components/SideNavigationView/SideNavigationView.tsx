@@ -9,17 +9,18 @@ import {
     IconPigMoney, IconSettings, IconStars,
     TablerIcon
 } from "@tabler/icons";
-import {NavLink, useParams, useResolvedPath} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 
 interface SideNavigationViewProps {
 }
 
 const SideNavigationView: FC<SideNavigationViewProps> = () => {
+    let {entityUid} = useParams();
     // console.log(useMatches())
     // console.log(useResolvedPath("aa/ss/rr"))
     // console.log(useParams())
-    let {entityUid} = useParams();
     // check if path is an entity path
+    // console.log(entityUid)
     return (
         <div className="SideNavigationView">
             <aside className="navbar navbar-vertical navbar-expand-lg">
@@ -39,109 +40,166 @@ const SideNavigationView: FC<SideNavigationViewProps> = () => {
                             {
                                 entityUid ?
                                     <ul>
-                                        <SideNavigationViewItem text={"Inventories"} icon={IconBox}>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"}
-                                                                       text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"}
-                                                                       text={"View All"}/>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"}
-                                                                       text={"Archive"}/>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"} text={"Trash"}/>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"}
-                                                                       text={"Add Inventory"}/>
-                                            <SideNavigationViewSubItem link={"/inventories/dashboard"}
-                                                                       text={"Add Inventory"}/>
+                                        <SideNavigationViewItem text={"Inventory"} icon={IconBox}>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/inventory/dashboard`}
+                                                text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/inventory/all`}
+                                                text={"All Inventories"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/inventory/Archive`}
+                                                text={"Archive"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/inventory/trash`}
+                                                text={"Trash"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/inventory/add`}
+                                                text={"Add Inventory"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Assets Manager"} icon={IconAsset}>
-                                            <SideNavigationViewSubItem link={"/assets/dashboard"} text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/assets/all"} text={"View Assets"}/>
-                                            <SideNavigationViewSubItem link={"/assets/active"} text={"Active Assets"}/>
-                                            <SideNavigationViewSubItem link={"/assets/register"}
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/dashboard`}
+                                                                       text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/all`}
+                                                                       text={"View Assets"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/active`}
+                                                                       text={"Active Assets"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/register`}
                                                                        text={"Register Asset"}/>
-                                            <SideNavigationViewSubItem link={"/assets/trash"} text={"Trash"}/>
-                                            <SideNavigationViewSubItem link={"/assets/archive"} text={"Archive"}/>
-                                            <SideNavigationViewSubItem link={"/assets/groups"} text={"Groups"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/trash`}
+                                                                       text={"Trash"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/archive`}
+                                                                       text={"Archive"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/assets/groups`}
+                                                                       text={"Groups"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Finance"} icon={IconPigMoney}>
-                                            <SideNavigationViewSubItem link={"/finance/dashboard"} text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/finance/transactions"}
-                                                                       text={"Transactions"}/>
-                                            <SideNavigationViewSubItem link={"/finance/disputes"} text={"Disputes"}/>
-                                            <SideNavigationViewSubItem link={"/finance/accounts"} text={"Accounts"}/>
-                                            <SideNavigationViewSubItem link={"/finance/transactionHistory"}
-                                                                       text={"Transaction History"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/finance/dashboard`}
+                                                                       text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/finance/transactions`}
+                                                text={"Transactions"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/finance/disputes`}
+                                                                       text={"Disputes"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/finance/accounts`}
+                                                                       text={"Accounts"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/finance/transactionHistory`}
+                                                text={"Transaction History"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Stakeholders"} icon={IconLockAccess}>
-                                            <SideNavigationViewSubItem link={"/Stakeholders/dashboard"}
-                                                                       text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/Stakeholders/all"}
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/Stakeholders/dashboard`}
+                                                text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/Stakeholders/all`}
                                                                        text={"All Stakeholders"}/>
-                                            <SideNavigationViewSubItem link={"/Stakeholders/staffs"} text={"Staffs"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/Stakeholders/staffs`}
+                                                                       text={"Staffs"}/>
                                             {/*for delivery company show*/}
-                                            <SideNavigationViewSubItem link={"/Stakeholders/dashboard"}
-                                                                       text={"Drivers"}/>
-                                            <SideNavigationViewSubItem link={"/Stakeholders/register"}
-                                                                       text={"Register"}/>
-                                            <SideNavigationViewSubItem link={"/Stakeholders/Archive"} text={"Archive"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/Stakeholders/dashboard`}
+                                                text={"Drivers"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/Stakeholders/register`}
+                                                text={"Register"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/Stakeholders/Archive`}
+                                                text={"Archive"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Roles/Permissions"} icon={IconLockAccess}>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/dashboard"}
-                                                                       text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/dashboard"}
-                                                                       text={"Session Tracker"}/>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/roles/view"}
-                                                                       text={"View Role"}/>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/roles/create"}
-                                                                       text={"Create Role"}/>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/permissions/view"}
-                                                                       text={"View Permission"}/>
-                                            <SideNavigationViewSubItem link={"/roles-permissions/permissions/create"}
-                                                                       text={"Create Permission"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/dashboard`}
+                                                text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/dashboard`}
+                                                text={"Session Tracker"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/roles/view`}
+                                                text={"View Role"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/roles/create`}
+                                                text={"Create Role"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/permissions/view`}
+                                                text={"View Permission"}/>
+                                            <SideNavigationViewSubItem
+                                                link={`/entity/${entityUid}/roles-permissions/permissions/create`}
+                                                text={"Create Permission"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Issues Tracker"} icon={IconPhoneCall}>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Open A New Issues"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Closed Issues"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Archived Issues"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Open A New Issues"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Closed Issues"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Archived Issues"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Customer Service"} icon={IconPhoneCall}>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Dashboard"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Chat"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"All Customers"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Current Issues"}/>
-                                            <SideNavigationViewSubItem link={"/cs"} text={"Completed Issues"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Dashboard"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`} text={"Chat"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"All Customers"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Current Issues"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/cs`}
+                                                                       text={"Completed Issues"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Help"} icon={IconLifebuoy}>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Inventories"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Asset"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Finance"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Stakeholders"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Roles/Permissions"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Inventories"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Inventories"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Asset"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Finance"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Stakeholders"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Roles/Permissions"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Inventories"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Review/Rating System"} icon={IconStars}>
-                                            <SideNavigationViewSubItem link={"/help"} text={"All Reviews"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Asset"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Finance"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Stakeholders"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Roles/Permissions"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Inventories"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"All Reviews"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Asset"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Finance"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Stakeholders"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Roles/Permissions"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Inventories"}/>
                                         </SideNavigationViewItem>
                                         <SideNavigationViewItem text={"Settings"} icon={IconSettings}>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Inventories"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Asset"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Finance"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Stakeholders"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Roles/Permissions"}/>
-                                            <SideNavigationViewSubItem link={"/help"} text={"Inventories"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Inventories"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Asset"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Finance"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Stakeholders"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Roles/Permissions"}/>
+                                            <SideNavigationViewSubItem link={`/entity/${entityUid}/help`}
+                                                                       text={"Inventories"}/>
                                         </SideNavigationViewItem>
                                     </ul>
                                     :
                                     <ul>
-                                        <SideNavigationViewItem text={"Dashboard"} icon={IconDashboard}/>
-                                        <SideNavigationViewItem text={"Profile"} icon={IconBox}/>
-                                        <SideNavigationViewItem text={"Entities"} icon={IconBuilding}/>
-                                        <SideNavigationViewItem text={"Finance"} icon={IconCashBanknote}/>
+                                        <SideNavigationViewItem text={"Dashboard"} link={"/account/dashboard"}
+                                                                icon={IconDashboard}/>
+                                        <SideNavigationViewItem text={"Profile"} link={"/account/profile"}
+                                                                icon={IconBox}/>
+                                        <SideNavigationViewItem text={"Entities"} link={"/account/entities"}
+                                                                icon={IconBuilding}/>
+                                        <SideNavigationViewItem text={"Finance"} link={"/account/finance"}
+                                                                icon={IconCashBanknote}/>
                                     </ul>
                             }
                         </ul>
@@ -164,7 +222,9 @@ const SideNavigationViewItem: FC<SideNavigationViewItemProps> = (props) => {
     if (!props.children || (props.children && props.children.length <= 0))
         return (
             <li className="nav-item">
-                <a className="nav-link" href={props.link}>
+
+                <NavLink to={props.link ? props.link : ""} className={({isActive}) =>
+                    isActive ? "nav-link active" : "nav-link"}>
                     {
                         props.icon ?
                             <span className="nav-link-icon d-md-none d-lg-inline-block">
@@ -181,7 +241,7 @@ const SideNavigationViewItem: FC<SideNavigationViewItemProps> = (props) => {
                             :
                             ""
                     }
-                </a>
+                </NavLink>
             </li>
         )
     else
@@ -227,8 +287,10 @@ interface SideNavigationViewSubItemProps {
 const SideNavigationViewSubItem: FC<SideNavigationViewSubItemProps> = (props) => {
 
     return (
-        <div className="dropdown-menu-column ps-lg-4">
-            <NavLink to={props.link ? props.link : ""} className={"dropdown-item"}>
+        <div className="dropdown-menu-column ps-lg-4 mt-1">
+            <NavLink to={props.link ? props.link : ""} className={({isActive}) =>
+                isActive ? "dropdown-menu active d-block p-1 bg-transparent" : "dropdown-menu d-block p-1 bg-transparent"}
+                     style={{background: "red !important"}}>
                 {props.text}
             </NavLink>
         </div>

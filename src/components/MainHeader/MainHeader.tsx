@@ -42,7 +42,7 @@ const HeaderNotificationView: FC<MainHeaderProps> = () => {
                 <div className="nav-link px-0 hide-theme-light" data-bs-toggle="tooltip"
                      data-bs-placement="bottom" aria-label="Enable light mode">
 
-                    <IconSun strokeLinecap={"round"} strokeLinejoin={"round"} strokeWidth={2}
+                    <IconSun className={"cursor-pointer"} strokeLinecap={"round"} strokeLinejoin={"round"} strokeWidth={2}
                              stroke={"currentColor"}/>
                 </div>
 

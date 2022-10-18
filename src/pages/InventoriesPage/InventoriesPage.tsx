@@ -5,6 +5,7 @@ import {TableColumn} from "../../components/DataTable/DataTableObjects";
 import {IconTable} from "@tabler/icons";
 import {Inventory} from "../../model/Inventory";
 import logo from '../../logo.svg';
+import PageHeader from "../../components/PageHeader/PageHeader.lazy";
 
 interface InventoriesPageProps {
 }
@@ -489,24 +490,23 @@ const InventoriesPage: FC<InventoriesPageProps> = () => {
         },
     ];
 
+    let dataFetcher = (pageSize: number, currentPage: number) => {
+        return {
+            data: data,
+            totalDataCount: 37
+        };
+    }
     return (
         <div className="page-wrapper InventoriesPage page_main">
-            <div className="page-header d-print-none">
-                <div className="container-xl">
-                    <div className="row g-2 align-items-center">
-                        <div className="col">
-                            <h2 className="page-title">
-                                Inventories
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <PageHeader title={"Inventory"} smallText={"Buyern"}/>
 
             <div className={"page-body container-xl"}>
-                <DataTable title={"All Inventories"} columns={tableColumns} data={data} selectable searchable
-                           totalDataCount={100} currentPage={1} rowCountPerPage={10}/>
+                <DataTable columns={tableColumns} selectable searchable fetchData={dataFetcher} currentPage={1} actionButtons={(data: Inventory[])=>[
+                    <button className={"btn btn-outline-danger"} onClick={()=>{
+                        console.log(data)}}>Delete</button>,
+                    <button className={"btn btn-amber"}>Archive</button>,
+                    <button className={"btn btn-outline-success"}>Copy</button>
+                ]}/>
             </div>
         </div>
     )

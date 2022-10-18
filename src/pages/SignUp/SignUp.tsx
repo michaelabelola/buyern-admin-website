@@ -13,7 +13,7 @@ const SignUp: FC<SignUpProps> = () => {
 
     return (
         <div className="page page-center">
-            <div className="container container-tight py-4">
+            <div className="container container-tight py-4" style={{minWidth:"45%"}}>
                 <div className="text-center mb-4">
                     <a href="." className="navbar-brand navbar-brand-autodark">
                         <img src={logo} height="36" alt=""/></a>
@@ -24,15 +24,15 @@ const SignUp: FC<SignUpProps> = () => {
                         {/*<fieldset className={"form-fieldset"}>*/}
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">First Name</label>
-                            <input type="text" className="form-control" placeholder="Enter name"/>
+                            <input type="text" className="form-control" placeholder="First name"/>
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">Last Name</label>
-                            <input type="text" className="form-control" placeholder="Enter name"/>
+                            <input type="text" className="form-control" placeholder="Last name"/>
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">Email</label>
-                            <input type="email" className="form-control" placeholder="Enter email"/>
+                            <input type="email" className="form-control" placeholder="Email"/>
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">Password</label>
@@ -43,7 +43,7 @@ const SignUp: FC<SignUpProps> = () => {
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">Phone Number</label>
-                            <input type="tel" className="form-control" placeholder="Enter email"/>
+                            <input type="tel" className="form-control" placeholder="Phone"/>
                         </div>
 
                         <div className="mb-3 d-flex flex-column align-items-start">
@@ -61,8 +61,8 @@ const SignUp: FC<SignUpProps> = () => {
                             <input type="text" className="form-control" placeholder="Address"/>
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
-                            <label className="form-label">Address1</label>
-                            <input type="text" className="form-control" placeholder="Address1"/>
+                            <label className="form-label">Address 2</label>
+                            <input type="text" className="form-control" placeholder="Address 2"/>
                         </div>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label required">Country</label>

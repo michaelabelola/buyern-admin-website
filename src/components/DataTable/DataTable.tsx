@@ -1,25 +1,35 @@
-import React, {FC, useState} from 'react';
-import './DataTable.css';
+import React, {FC, useEffect, useState} from 'react';
+import styles from './DataTable.module.css';
 import {IconChevronUp} from "@tabler/icons";
 import {TableColumn, TableProperties} from "./DataTableObjects";
 import Pagination from "./Pagination/Pagination.lazy";
+import {useSessionStorage} from "usehooks-ts";
 
 interface DataTableProps<T> extends TableProperties<T> {
 }
 
 const DataTable: FC<DataTableProps<any>> = (props) => {
-        const [pageSize, setPageSize] = useState(10);
-        const [totalDataCount, setTotalDataCount] = useState(34);
+        const [pageSize, setPageSize] = useSessionStorage("rowCount", 10);
+        const [currentPage, setCurrentPage] = useState(1);
+        // const [pageSize] = useState(10);
+        const [totalDataCount, setTotalDataCount] = useState(props.totalDataCount);
+        const [data, setData] = useState([] as any[]);
         // let [tableProperties, setTableProperties] = useState({} as DataTableState<any>);
+        useEffect(() => {
+            setData(props.data ? props.data : [] as any)
+        }, [props.data])
 
-        // useEffect(() => {
-        //     setNumOfPages(props.numOfPages ? props.numOfPages : 1)
-        // }, [])
+        useEffect(() => {
+            if (!props.fetchData) return;
+            let newData = props.fetchData(pageSize, currentPage);
+            setData(newData.data);
+            setTotalDataCount(newData.totalDataCount ? newData.totalDataCount : 0);
+        }, [pageSize, currentPage, data, props])
 
         return (
             <div className="DataTable">
                 <div className="col-12">
-                    <div className="card">
+                    <div className="card" style={{background:"transparent !important"}}>
                         {
                             props.title ?
                                 <div className="card-header">
@@ -27,6 +37,13 @@ const DataTable: FC<DataTableProps<any>> = (props) => {
                                 </div>
                                 : ""
                         }
+                        {/*<div className={"card-header gap-2"}>*/}
+                        {/*    {data && data.length > 0 ? props.actionButtons ? props.actionButtons(data.filter((value, index, array) => {*/}
+                        {/*                if (value.valIsChecked) return true;*/}
+                        {/*            }))*/}
+                        {/*            : ""*/}
+                        {/*        : ""}*/}
+                        {/*</div>*/}
                         <div className="card-body border-bottom py-3">
                             <div className="d-flex">
                                 {
@@ -54,14 +71,14 @@ const DataTable: FC<DataTableProps<any>> = (props) => {
                             <table className="table card-table table-vcenter text-nowrap datatable">
                                 <thead>
                                 <tr>
-                                    <th className="w-1">
-                                        {
-                                            !props.selectable || props.disableSelectAll ?
-                                                "" :
+                                    {
+                                        !props.selectable || props.disableSelectAll ?
+                                            "" :
+                                            <th className="w-1">
                                                 <input className="form-check-input m-0 align-middle" type="checkbox"
                                                        aria-label="Select all invoices"/>
-                                        }
-                                    </th>
+                                            </th>
+                                    }
                                     {props.columns?.map((column, index) => {
                                         return <th key={index}>{column.title} {column.sortBy ? <IconChevronUp/> : ""}</th>
                                     })}
@@ -69,13 +86,17 @@ const DataTable: FC<DataTableProps<any>> = (props) => {
                                 </thead>
                                 <tbody>
 
-                                {props.data?.slice(0, pageSize)?.map((data, index) => {
+                                {data ? data?.slice(0, pageSize)?.map((data: any, index) => {
 
-                                    return (<tr key={index}>
-                                        {/*Handle check box*/}
+                                    return (<tr key={index}
+                                                className={`cursor-pointer ${styles.row} ${data.valIsChecked ? styles.checked : ""}`}>
+
                                         {props.selectable ?
                                             <td key={index}><input className="form-check-input m-0 align-middle"
                                                                    type="checkbox"
+                                                                   defaultChecked={data.valIsChecked ? data.valIsChecked : false}
+                                                                   onChange={(ev) => {
+                                                                   }}
                                                                    aria-label="Select"/></td>
                                             : ""
                                         }
@@ -86,12 +107,14 @@ const DataTable: FC<DataTableProps<any>> = (props) => {
                                         })
                                         }
                                     </tr>)
-                                })
+                                }) : ""
                                 }
                                 </tbody>
                             </table>
                         </div>
-                        <Pagination totalDataCount={totalDataCount ? totalDataCount : 0} pageSize={pageSize}/>
+                        <Pagination pageSizeSetter={setPageSize} currentPageSetter={setCurrentPage}
+                                    currentPage={currentPage} totalDataCount={totalDataCount ? totalDataCount : 0}
+                                    pageSize={pageSize}/>
                     </div>
                 </div>
             </div>

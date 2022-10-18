@@ -11,7 +11,7 @@ interface TableColumn<T> {
     sortBy?: boolean;
     muted?: boolean;
     sortFunction?: () => {};
-    viewGenerator?: (data: T) => ReactElement | any;
+    viewGenerator?: (data: T) => ReactElement | string | number;
 }
 
 interface TableRow {
@@ -31,11 +31,13 @@ interface TableProperties<T> {
     columns?: TableColumn<T>[];
     data?: T[];
     totalDataCount?: number;
-    rowCountPerPage?: number;
+    // rowCountPerPage?: number;
     numOfPages?: number;
     currentPage?: number;
-
+    fetchData?: (pageSize: number, currentPage: number) => { data: T, totalDataCount: number };
+    actionButtons?: (data: T[]) => any;
 }
+
 
 export type {
     TableColumn, TableRow, TableProperties
