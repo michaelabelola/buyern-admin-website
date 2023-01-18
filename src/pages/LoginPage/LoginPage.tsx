@@ -1,15 +1,11 @@
 import React, {FC} from 'react';
 import logo from '../../logo.svg';
 import './LoginPage.css';
-import StatusModal from "../../components/StatusModal/StatusModal.lazy";
-import {Status} from "../../enums/Status";
-import {ModalId} from "../../components/StatusModal/StatusModal";
 
 interface LoginPageProps {
 }
 
 const LoginPage: FC<LoginPageProps> = () => {
-    let loginModalId = new ModalId("loginModal");
     return (
         <div className="row g-0 flex-fill">
             <div
@@ -27,7 +23,8 @@ const LoginPage: FC<LoginPageProps> = () => {
                     <form action="./" method="get" autoComplete="off" noValidate>
                         <div className="mb-3 d-flex flex-column align-items-start">
                             <label className="form-label">Email address</label>
-                            <input type="email" className="form-control" placeholder="your@email.com" autoComplete="off"/>
+                            <input type="email" className="form-control" placeholder="your@email.com"
+                                   autoComplete="off"/>
                         </div>
                         <div className="mb-2 d-flex flex-column align-items-start">
                             <label className="form-label d-flex">
@@ -48,8 +45,7 @@ const LoginPage: FC<LoginPageProps> = () => {
                             </label>
                         </div>
                         <div className="form-footer">
-                            <button type="button" className="btn btn-primary w-100" data-bs-toggle="modal"
-                                    data-bs-target={loginModalId.openerId}>Sign in
+                            <button type="button" className="btn btn-primary w-100" data-bs-toggle="modal">Sign in
                             </button>
                         </div>
                     </form>
@@ -62,15 +58,15 @@ const LoginPage: FC<LoginPageProps> = () => {
             <div className="col-12 col-lg-6 col-xl-8 d-none d-lg-block">
                 <div className="bg-cover h-100 min-vh-100" style={{backgroundImage: `url(${logo})`}}/>
             </div>
-            <StatusModal title={"Account Created"} status={Status.SUCCESS}
-                         text={<div>abelmichaelola@gmail.com <br/> Michael Abel</div>}
-                         actionButton={{
-                             text: "Go To Dashboard", callback: () => {
-                             }
-                         }}
+            {/*<StatusModal title={"Account Created"} status={Status.SUCCESS}*/}
+            {/*             text={<div>abelmichaelola@gmail.com <br/> Michael Abel</div>}*/}
+            {/*             actionButton={{*/}
+            {/*                 text: "Go To Dashboard", callback: () => {*/}
+            {/*                 }*/}
+            {/*             }}*/}
 
-                     modalId={loginModalId}
-            />
+            {/*         modalId={loginModalId}*/}
+            {/*/>*/}
         </div>
 
     )

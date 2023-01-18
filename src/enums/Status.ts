@@ -1,5 +1,5 @@
 enum Status {
-    ERROR, WARNING, DEFAULT, SUCCESS
+    ERROR, WARNING, DEFAULT, SUCCESS, LOADING
 }
 
 export {Status}

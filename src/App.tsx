@@ -10,6 +10,8 @@ import Dashboard from "./components/Dashboard/Dashboard.lazy";
 import UserFinancePage from "./components/UserFinancePage/UserFinancePage.lazy";
 import SignUp from "./pages/SignUp/SignUp.lazy";
 import LoginPage from "./pages/LoginPage/LoginPage.lazy";
+import ProfilePage from "./pages/ProfilePage/ProfilePage.lazy";
+import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage.lazy";
 
 // const Redirect: FC<{ to: string }> = (props) => {
 //     return <Navigate to={`/${useParams().entityId + props.to}`} replace/>
@@ -41,11 +43,12 @@ function App() {
                     <Route index={true} path={"*"} element={<MainHeader/>}/>
                 </Route>
             </Routes>
-
             <Routes>
                 <Route path={"/account"}>
                     <Route index={true} element={<Navigate to={`/account/dashboard`} replace/>}/>
                     <Route path={"/account/dashboard"} element={<UserDashboard/>}/>
+                    <Route path={"/account/profile"} element={<ProfilePage/>}/>
+                    <Route path={"/account/settings"} element={<UserSettingsPage/>}/>
                     <Route path={"/account/entities"} element={<EntitiesGalleryPage/>}/>
                     <Route path={"/account/finance"} element={<UserFinancePage/>}/>
                 </Route>

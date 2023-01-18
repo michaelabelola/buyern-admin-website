@@ -173,3 +173,26 @@ a:hover{
     text-decoration: none;
     transform: scale(1.01);
 }
+.valid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 85.7142857%;
+    color: #39d64e;
+}
+.loading-feedback {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 85.7142857%;
+    color: #d6c139;
+}
+
+.form-control.is-loading {
+    border-color: #d6c139;
+    padding-right: calc(1.4285714em + .875rem);
+    /*background-image: url();*/
+    background-repeat: no-repeat;
+    background-position: right calc(.3571429em + .21875rem) center;
+    background-size: calc(.7142857em + .4375rem) calc(.7142857em + .4375rem);
+}

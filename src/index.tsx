@@ -4,10 +4,24 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import axios from "axios";
+import {BaseUrls} from "./enums/BaseUrls";
+import {userAccessToken} from "./helpers/AccessToken";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
+axios.interceptors.request.use(config => {
+    if (config.baseURL === BaseUrls.USER_URL) {
+        if (config.headers)
+            config.headers[userAccessToken.tokenId] = userAccessToken.token;
+        else
+            config.headers = {
+                [userAccessToken.tokenId]: userAccessToken.token
+            }
+    }
+    return config;
+})
 root.render(
     <React.StrictMode>
         <BrowserRouter>

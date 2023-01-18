@@ -2,6 +2,7 @@ interface Location {
     id?: number;
     tag?: string;
     address?: string;
+    address2?: string;
     city?: {
         id?: number;
         name?: string;

@@ -5,7 +5,7 @@ import {
     IconAsset,
     IconBox, IconBuilding, IconCashBanknote, IconDashboard,
     IconLifebuoy,
-    IconLockAccess, IconPhoneCall,
+    IconLockAccess, IconManualGearbox, IconPhoneCall,
     IconPigMoney, IconSettings, IconStars,
     TablerIcon
 } from "@tabler/icons";
@@ -194,12 +194,14 @@ const SideNavigationView: FC<SideNavigationViewProps> = () => {
                                     <ul>
                                         <SideNavigationViewItem text={"Dashboard"} link={"/account/dashboard"}
                                                                 icon={IconDashboard}/>
-                                        <SideNavigationViewItem text={"Profile"} link={"/account/profile"}
+                                        <SideNavigationViewItem text={"My Account"} link={"/account/profile"}
                                                                 icon={IconBox}/>
                                         <SideNavigationViewItem text={"Entities"} link={"/account/entities"}
                                                                 icon={IconBuilding}/>
                                         <SideNavigationViewItem text={"Finance"} link={"/account/finance"}
                                                                 icon={IconCashBanknote}/>
+                                        <SideNavigationViewItem text={"Settings"} link={"/account/settings"}
+                                                                icon={IconManualGearbox}/>
                                     </ul>
                             }
                         </ul>
